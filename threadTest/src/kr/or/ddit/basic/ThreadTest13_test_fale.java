@@ -1,13 +1,12 @@
-/*package kr.or.ddit.basic;
+package kr.or.ddit.basic;
 
 import java.util.HashMap;
 
-import test.PhoneBook_test2.Phone;
 
 
-public class ThreadTest13_test {
+public class ThreadTest13_test_fale {
 	
-	
+	/*
 	 * 문제) 10마리의 말들이 경주하는 경마 프로그램 작성하기
 	 * 
 	 * 경주마는 Horse라는 이름의 클래스로 구성하고
@@ -29,33 +28,33 @@ public class ThreadTest13_test {
 	 * 
 	 * - 경기가 끝나면 등수 순으로 경기 결과를 출력한다.
 	 * 
-	 
+	 */
 	
 	public static HashMap<String, HorseRankNumber> horseRank = new HashMap<>();
 	
 	
 	public static void main(String[] args) {
-		Horse[] players = new Horse[] {
-				new Horse("말01"),
-				new Horse("말02"),
-				new Horse("말03"),
-				new Horse("말04"),
-				new Horse("말05"),
-				new Horse("말06"),
-				new Horse("말07"),
-				new Horse("말08"),
-				new Horse("말09"),
-				new Horse("말10")
+		HorseClass[] players = new HorseClass[] {
+				new HorseClass("말01"),
+				new HorseClass("말02"),
+				new HorseClass("말03"),
+				new HorseClass("말04"),
+				new HorseClass("말05"),
+				new HorseClass("말06"),
+				new HorseClass("말07"),
+				new HorseClass("말08"),
+				new HorseClass("말09"),
+				new HorseClass("말10")
 		};
 		
-		for (Horse player : players) {
+		for (HorseClass player : players) {
 			player.start();
 		}
 //		String here="";
-		for (Horse player : players) {
+		for (HorseClass player : players) {
 			try {
 				player.join(); // 다른 쓰레드가 끝날때까지 기달려주는거(?)
-				for(int i = 1; i <= 50; i++) {
+				/*for(int i = 1; i <= 50; i++) {
 					System.out.println(players[0] + "이 현재 돈 바퀴 수 : " + i);
 					System.out.println(players[1] + "이 현재 돈 바퀴 수 : " + i);
 					
@@ -79,7 +78,7 @@ public class ThreadTest13_test {
 						here += "-";
 					}
 					
-				}
+				}*/
 			} catch (InterruptedException e) {
 			}
 		}
@@ -87,20 +86,20 @@ public class ThreadTest13_test {
 		System.out.println();
 //		System.out.println("경기 결과 : " + Horse.rank);
 		System.out.println("경기 결과 : ");
-		System.out.println(Horse.rank);
+		System.out.println(HorseClass.rank);
 	}
 
 }
 
 
-class Horse extends Thread {
+class HorseClass extends Thread {
 	public static String rank = "";	// 빨리 출력한 순서대로 저장할 변수 선언
 	private String name;
 	private String here="";
 	private static int rrank=1;
 	
 	// 생성자
-	public Horse(String name) {
+	public HorseClass(String name) {
 		this.name = name;
 	}
 	
@@ -128,7 +127,7 @@ class Horse extends Thread {
 //				System.out.println();
 //				System.out.println("TEST!!!!!!");
 //				System.out.println("말들 현재 위치");
-				if (i == 5 || i == 10 || i == 15 || i == 20 
+				/*if (i == 5 || i == 10 || i == 15 || i == 20 
 						|| i == 25 || i == 30 || i == 35 
 						|| i == 40 || i == 45 || i == 50) {
 //					here += ">";
@@ -141,9 +140,9 @@ class Horse extends Thread {
 //					System.out.println(name + "이 현재 돈 바퀴 수 : " + i);
 					System.out.println(name + " : " + here);
 					
-				}
+				}*/
 //				System.out.println(name + " 현재 바퀴 : " + i);
-				if (i == 5 || i == 10 || i == 15 || i == 20 
+				/*if (i == 5 || i == 10 || i == 15 || i == 20 
 						|| i == 25 || i == 30 || i == 35 
 						|| i == 40 || i == 45 || i == 50) {
 					here += ">";
@@ -158,13 +157,13 @@ class Horse extends Thread {
 					 
 				} else {
 					here += "-";
-				}			
+				}*/			
 			
 			try {
 				// 101 ~ 500 사이의 난수 설정하기
 //				Thread.sleep((int)(Math.random() * 400 + 101));
 				Thread.sleep((int)(Math.random() * 101));
-				if (i == 5 || i == 10 || i == 15 || i == 20 
+				/*if (i == 5 || i == 10 || i == 15 || i == 20 
 					|| i == 25 || i == 30 || i == 35 
 					|| i == 40 || i == 45 || i == 50) {
 					here +=">";
@@ -181,7 +180,7 @@ class Horse extends Thread {
 					}
 				} else {
 					here += "-";
-				}
+				}*/
 			} catch (InterruptedException e) {
 			}
 			
@@ -190,8 +189,8 @@ class Horse extends Thread {
 //		System.out.println(name + "이 경기장 다돔.");
 //		System.out.println();
 //		Horse.rank += name + "\t";
-		Horse.rank += name + " 순위 : " + rrank + "\n";
-		Horse.rrank++;
+		HorseClass.rank += name + " 순위 : " + rrank + "\n";
+		HorseClass.rrank++;
 		
 //		System.out.println(name + " 랭크 : " + rrank);
 	}
@@ -225,7 +224,12 @@ class HorseRankNumber extends Thread implements Comparable<HorseRankNumber> {
 		this.horseRankNum = horseRankNum;
 		this.horseName = horseName;
 	}
+
+	@Override
+	public int compareTo(HorseRankNumber o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
 
 
-*/

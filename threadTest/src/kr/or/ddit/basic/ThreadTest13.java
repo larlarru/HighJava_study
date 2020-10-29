@@ -89,7 +89,7 @@ public class ThreadTest13 {
 		}
 //		System.out.println();
 //		System.out.println("경기 결과 : " + Horse.rank);
-		System.out.println("경기 결과 : ");
+		System.out.println("경주말 순위 : ");
 		System.out.println(Horse.rank);
 //		horseList.add(Horse.name + "\t: " + Horse.here + "> " + Horse.name + " 도착");
 	}
