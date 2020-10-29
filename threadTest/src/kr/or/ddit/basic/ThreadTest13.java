@@ -1,5 +1,8 @@
 package kr.or.ddit.basic;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+
 public class ThreadTest13 {
 	
 	/*
@@ -78,19 +81,32 @@ public class ThreadTest13 {
 		}
 		
 		System.out.println();
+		HashSet<String> horseList = new HashSet<>();
+		horseList.add(Horse.result);
+		ArrayList<String> horseListList = new ArrayList<>(horseList);
+		for (int i = 0; i < horseListList.size(); i++) {
+			System.out.println("경주 결과 :\n" + horseListList.get(i));
+		}
+//		System.out.println();
 //		System.out.println("경기 결과 : " + Horse.rank);
 		System.out.println("경기 결과 : ");
 		System.out.println(Horse.rank);
+//		horseList.add(Horse.name + "\t: " + Horse.here + "> " + Horse.name + " 도착");
 	}
 
 }
 
 
 class Horse extends Thread {
+	
+	
 	public static String rank = "";	// 빨리 출력한 순서대로 저장할 변수 선언
 	private String name;
 	private String here="";
+//	public static String name;
+//	public static String here="";
 	private static int rrank=1;
+	public static String result="";
 	
 	// 생성자
 	public Horse(String name) {
@@ -100,6 +116,7 @@ class Horse extends Thread {
 	@Override
 	public void run() {
 		for(int i = 1; i <= 50; i++) {
+//			HashSet<String> horseList = new HashSet<>();
 			if (i == 5 || i == 10 || i == 15 || i == 20 
 					|| i == 25 || i == 30 || i == 35 
 					|| i == 40 || i == 45 || i == 49) {
@@ -109,11 +126,22 @@ class Horse extends Thread {
 				
 				here += "->";
 				System.out.println(name + "\t: " + here);
+//				result += name + "\t: " + here;
+//				horseList.add(result);				
+//				ArrayList<String> horseListList = new ArrayList<>(horseList);
+//				System.out.println("TEST!!! :\n" + horseListList.get(0)+"\n");
+//				// 초기화
+//				horseList = new HashSet<>();
+//				horseListList = new ArrayList<>(horseList);
+//				result = "";
 				here = here.replace("->", "-");
 			}
 			here += "-";
 			if (i == 50){
-				System.out.println(name + "\t: " + here + "> 도착");
+//				HashSet<String> horseList = new HashSet<>();
+//				ArrayList<String> horseListList = new ArrayList<>(horseList);
+				System.out.println(name + "\t: " + here + "> " + name + " 도착");
+				result += name + "\t: " + here + "> " + name + " 도착" + "\n";				
 			}
 //			System.out.println(name + "\t: " + here);
 //			here = here.replace("->", "-");
@@ -185,6 +213,8 @@ class Horse extends Thread {
 //		Horse.rank += name + "\t";
 		Horse.rank += name + " 순위 : " + rrank + "\n";
 		Horse.rrank++;
+
+		
 		
 //		System.out.println(name + " 랭크 : " + rrank);
 	}
