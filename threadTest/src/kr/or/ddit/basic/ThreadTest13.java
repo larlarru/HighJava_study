@@ -85,7 +85,7 @@ public class ThreadTest13 {
 
 }
 
-// A~Z까지 출력하는 쓰레드
+
 class Horse extends Thread {
 	public static String rank = "";	// 빨리 출력한 순서대로 저장할 변수 선언
 	private String name;
