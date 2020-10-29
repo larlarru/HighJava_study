@@ -45,59 +45,65 @@ class GameDataInput extends Thread {
 		
 		int ai = (int)(Math.random() * 3)+1;
 		
-//		System.out.println("랜덤 값 잘 나오는지 확인" + ai);
-		
+//		System.out.println("랜덤 값 잘 나오는지 확인 : " + ai);
 		String str = JOptionPane.showInputDialog("가위바위보를 입력하세요.");
 		inputCheck = true;
-		if(str.equals("가위")) {
-			if(ai==RPSGame.SCISSORS) { //가위-가위였을경우
+		
+		// 가위바위보 조건 비교들
+		if (str == null) {	//만약에 입력하지 않고 취소 눌러서 null이 나올경우 에러 방지하는데 만약에 이게 여기 맨앞이 아니라 밑에 있으면 에러난다.
+			System.out.println("아무것도 입력하지 않았길래 기권으로 판단해서 당신은 졌습니다.");
+			System.exit(0);
+		} else if (str.equals("가위")) {
+			if (ai == RPSGame.SCISSORS) { // 가위-가위였을경우
 				System.out.println("입력한 값 : " + str);
 				System.out.println("비겼습니다.");
 				System.exit(0);
-			} else if(ai==RPSGame.ROCK) { // 가위-바위였을경우
+			} else if (ai == RPSGame.ROCK) { // 가위-바위였을경우
 				System.out.println("입력한 값 : " + str);
 				System.out.println("당신이 졌습니다.");
 				System.exit(0);
-			} else if(ai==RPSGame.PAPER) { // 가위-보였을경우
+			} else if (ai == RPSGame.PAPER) { // 가위-보였을경우
 				System.out.println("입력한 값 : " + str);
 				System.out.println("당신이 이겼습니다.");
 				System.exit(0);
-			} 
-			
-		} else if(str.equals("바위")) {
-			if(ai==RPSGame.SCISSORS) { //바위-가위였을경우
+			}
+
+		} else if (str.equals("바위")) {
+			if (ai == RPSGame.SCISSORS) { // 바위-가위였을경우
 				System.out.println("입력한 값 : " + str);
 				System.out.println("당신이 이겼습니다.");
 				System.exit(0);
-			} else if(ai==RPSGame.ROCK) { // 바위-바위였을경우
+			} else if (ai == RPSGame.ROCK) { // 바위-바위였을경우
 				System.out.println("입력한 값 : " + str);
 				System.out.println("비겼습니다.");
 				System.exit(0);
-			} else if(ai==RPSGame.PAPER) { // 바위-보였을경우
+			} else if (ai == RPSGame.PAPER) { // 바위-보였을경우
 				System.out.println("입력한 값 : " + str);
 				System.out.println("당신이 졌습니다.");
 				System.exit(0);
-			} 
-			
-		} else if(str.equals("보")) {
-			if(ai==RPSGame.SCISSORS) { //보-가위였을경우
+			}
+
+		} else if (str.equals("보")) {
+			if (ai == RPSGame.SCISSORS) { // 보-가위였을경우
 				System.out.println("입력한 값 : " + str);
 				System.out.println("당신이 졌습니다.");
 				System.exit(0);
-			} else if(ai==RPSGame.ROCK) { // 보-바위였을경우
+			} else if (ai == RPSGame.ROCK) { // 보-바위였을경우
 				System.out.println("입력한 값 : " + str);
 				System.out.println("당신이 이겼습니다.");
 				System.exit(0);
-			} else if(ai==RPSGame.PAPER) { // 보-보였을경우
+			} else if (ai == RPSGame.PAPER) { // 보-보였을경우
 				System.out.println("입력한 값 : " + str);
 				System.out.println("비겼습니다.");
 				System.exit(0);
-			} 
-			
+			}
+
 		} else {
 			System.out.println("아무것도 입력하지 않았길래 기권으로 판단해서 당신은 졌습니다.");
 			System.exit(0);
 		}
+		
+		
 	}
 	
 }
