@@ -1,11 +1,11 @@
-package kr.or.ddit.basic;
+/*package kr.or.ddit.basic;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 
 public class ThreadTest13_test {
 	
-	/*
+	
 	 * 문제) 10마리의 말들이 경주하는 경마 프로그램 작성하기
 	 * 
 	 * 경주마는 Horse라는 이름의 클래스로 구성하고
@@ -27,7 +27,7 @@ public class ThreadTest13_test {
 	 * 
 	 * - 경기가 끝나면 등수 순으로 경기 결과를 출력한다.
 	 * 
-	 */
+	 
 	
 	
 	public static void main(String[] args) {
@@ -51,7 +51,7 @@ public class ThreadTest13_test {
 		for (Horse player : players) {
 			try {
 				player.join(); // 다른 쓰레드가 끝날때까지 기달려주는거(?)
-				/*for(int i = 1; i <= 50; i++) {
+				for(int i = 1; i <= 50; i++) {
 					System.out.println(players[0] + "이 현재 돈 바퀴 수 : " + i);
 					System.out.println(players[1] + "이 현재 돈 바퀴 수 : " + i);
 					
@@ -75,7 +75,7 @@ public class ThreadTest13_test {
 						here += "-";
 					}
 					
-				}*/
+				}
 			} catch (InterruptedException e) {
 			}
 		}
@@ -149,7 +149,7 @@ class Horse extends Thread {
 //				System.out.println();
 //				System.out.println("TEST!!!!!!");
 //				System.out.println("말들 현재 위치");
-				/*if (i == 5 || i == 10 || i == 15 || i == 20 
+				if (i == 5 || i == 10 || i == 15 || i == 20 
 						|| i == 25 || i == 30 || i == 35 
 						|| i == 40 || i == 45 || i == 50) {
 //					here += ">";
@@ -162,9 +162,9 @@ class Horse extends Thread {
 //					System.out.println(name + "이 현재 돈 바퀴 수 : " + i);
 					System.out.println(name + " : " + here);
 					
-				}*/
+				}
 //				System.out.println(name + " 현재 바퀴 : " + i);
-				/*if (i == 5 || i == 10 || i == 15 || i == 20 
+				if (i == 5 || i == 10 || i == 15 || i == 20 
 						|| i == 25 || i == 30 || i == 35 
 						|| i == 40 || i == 45 || i == 50) {
 					here += ">";
@@ -179,13 +179,13 @@ class Horse extends Thread {
 					 
 				} else {
 					here += "-";
-				}*/			
+				}			
 			
 			try {
 				// 101 ~ 500 사이의 난수 설정하기
 //				Thread.sleep((int)(Math.random() * 400 + 101));
 				Thread.sleep((int)(Math.random() * 101));
-				/*if (i == 5 || i == 10 || i == 15 || i == 20 
+				if (i == 5 || i == 10 || i == 15 || i == 20 
 					|| i == 25 || i == 30 || i == 35 
 					|| i == 40 || i == 45 || i == 50) {
 					here +=">";
@@ -202,7 +202,7 @@ class Horse extends Thread {
 					}
 				} else {
 					here += "-";
-				}*/
+				}
 			} catch (InterruptedException e) {
 			}
 			
@@ -222,3 +222,4 @@ class Horse extends Thread {
 	
 	
 }
+*/
