@@ -1,5 +1,6 @@
 package kr.or.ddit.basic;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -20,15 +21,19 @@ public class FileCopyTest {
 			File file = new File("d:/D_Other/연습용/극한직업_복사본.jpg");	
 			FileOutputStream fout = new FileOutputStream(file);
 			
+			BufferedOutputStream bout = new BufferedOutputStream(fout);
+			
 			int c;	// 읽어온 데이터가 저장될 변수
 			
 			while( ( c=fin.read() ) != -1 ) {
-				fout.write(c);
+				bout.write(c);
 			}
+			bout.flush();
 			System.out.println("작업 완료");
 			
 			fin.close();
 			fout.close();
+			bout.close();
 			
 			
 		} catch (IOException e) {
