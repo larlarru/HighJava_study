@@ -1,6 +1,9 @@
-package kr.or.ddit.basic;
+package kr.or.ddit.tcp;
 
 import java.net.Socket;
+
+import kr.or.ddit.basic.Receiver;
+import kr.or.ddit.basic.Sender;
 
 public class TcpClient2 {
 	
