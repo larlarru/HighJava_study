@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Scanner;
 
 // JDBC(Java DataBase Connectivity) 라이브러리를 이용한 DB자료 처리하기
 
@@ -28,7 +27,7 @@ public class JdbcTest01 {
 	 */
 	
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+		
 		// DB작업에 필요한 객체변수 선언
 		Connection conn = null;
 		Statement stmt = null;
@@ -63,20 +62,15 @@ public class JdbcTest01 {
 			 * rs.next() ==> ResultSet객체의 데이터를 가리키는 포인터를 다음 레코드 자리로 이동시키고
 			 * 				 그 곳에 데이터가 있으면 true, 없으면 false를 반환한다.
 			 */
-			//int input=0;
-			//System.out.print("숫자 입력>>");
-			//input = sc.nextInt();
 			while(rs.next()) {
 				// 포인터가 가리키는 곳의 데이터를 가져오는 방법
 				// 형식1) rs.get자료형 이름("컬럼명")
 				// 형식2) rs.get자료형 이름(컬럼번호) ==> 컬럼번호는 1부터 시작
 				// 형식3) rs.get자료형 이름("컬럼의 alias명")
-				//if(rs.getInt("LPROD_ID") >= input) {
 				System.out.println("LPROD_ID" + rs.getInt("LPROD_ID"));
 				System.out.println("LPROD_GU" + rs.getString(2));
 				System.out.println("LPROD_NM" + rs.getString("LPROD_NM"));
 				System.out.println("--------------------------------------");
-				//}
 			}
 				
 			System.out.println("전체 자료 출력 끝...");

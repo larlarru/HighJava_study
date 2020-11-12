@@ -1,4 +1,4 @@
-package System.out;
+package kr.or.ddit.basic;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,6 +13,13 @@ public class JdbcTest02 {
 	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
+		
+		int input=0;
+		while(true) {
+			System.out.print("숫자 입력>>");
+			input = sc.nextInt();
+			if(input >= 0) break;
+		}
 		
 		// DB작업에 필요한 객체변수 선언
 		Connection conn = null;
@@ -30,15 +37,9 @@ public class JdbcTest02 {
 					"larlarru",
 					"java");
 			
-			int input=0;
-			while(true) {
-				System.out.print("숫자 입력>>");
-				input = sc.nextInt();
-				if(input >= 0) break;
-			}
 			
 			// 3-1. 실행할 SQL문 작성
-			String sql = "SELECT * FROM LPROD WHERE LPROD_ID >= " + input;
+			String sql = "SELECT * FROM LPROD WHERE LPROD_ID > " + input;
 				
 			// 3-2. Statement객체 생성 ==> Connection객체를 이용한다.
 			stmt = conn.createStatement();

@@ -1,4 +1,4 @@
-package System.out;
+package kr.or.ddit.basic;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,7 +13,33 @@ public class JdbcTest03 {
 	
 	public static void main(String[] args) {
 		
-		Scanner sc = new Scanner(System.in); 
+		Scanner sc = new Scanner(System.in);
+		
+		int input1=0;
+		int input2=0;
+		while(true) {
+			System.out.print("숫자1 입력>>");
+			input1 = sc.nextInt();
+			System.out.print("숫자2 입력>>");
+			input2 = sc.nextInt();
+			if(input1 >= 0 && input2 >= 0) break;
+		}
+		
+		/*
+		 * int max, min;
+		 * if(input1>input2) {
+		 * 	max = input1;
+		 * 	min = input2;
+		 * else {
+		 * 	max = input2;
+		 * 	min = input1;
+		 * }
+		*/
+		
+		/*
+		 * max = Math.max(input1, input2);
+		 * min = Math.min(input1, input2)
+		*/
 		
 		// DB작업에 필요한 객체변수 선언
 		Connection conn = null;
@@ -31,18 +57,10 @@ public class JdbcTest03 {
 					"larlarru",
 					"java");
 				
-			int input1=0;
-			int input2=0;
-			while(true) {
-				System.out.print("숫자1 입력>>");
-				input1 = sc.nextInt();
-				System.out.print("숫자2 입력>>");
-				input2 = sc.nextInt();
-				if(input1 >= 0 && input2 >= 0) break;
-			}
 			
 			// 3-1. 실행할 SQL문 작성
 			String sql = "SELECT * FROM LPROD WHERE LPROD_ID BETWEEN " + input1 + "AND " + input2;
+			/*String sql = "SELECT * FROM LPROD WHERE LPROD_ID >= " + min + "AND LPROD_ID =< " + max;*/
 				
 			// 3-2. Statement객체 생성 ==> Connection객체를 이용한다.
 			stmt = conn.createStatement();
