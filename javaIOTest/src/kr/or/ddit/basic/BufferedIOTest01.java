@@ -8,7 +8,7 @@ public class BufferedIOTest01 {
 	
 	public static void main(String[] args) {
 	
-		// 입출력의 성능 향상을 ㅜ이해서 Buffered스트림을 사용한다.
+		// 입출력의 성능 향상을 이해서 Buffered스트림을 사용한다.
 		try {
 			FileOutputStream fout =
 						new FileOutputStream("d:/D_Other/bufferTest.txt");

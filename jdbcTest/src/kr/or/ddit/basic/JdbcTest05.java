@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
+import kr.or.ddit.util.DBUtil;
+
 /*
  * LPROD테이블에 새로운 데이터 추가하기
  * 
@@ -32,12 +34,13 @@ public class JdbcTest05 {
 		
 		try {
 			
-			Class.forName("oracle.jdbc.driver.OracleDriver");
+			/*Class.forName("oracle.jdbc.driver.OracleDriver");
 			
 			conn = DriverManager.getConnection(
 					"jdbc:oracle:thin:@localhost:1521:xe",
 					"larlarru",
-					"java");
+					"java");*/
+			conn = DBUtil.getConnection();
 			
 			while(true) {
 				System.out.print("LPROD_GU 입력(예 : P101) : ");
@@ -98,9 +101,9 @@ public class JdbcTest05 {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} /*catch (ClassNotFoundException e) {
 			e.printStackTrace();
-		} finally {
+		}*/ finally {
 			if(stmt!=null) try { stmt.close(); } catch(SQLException e) {}
 			if(pstmt!=null) try { pstmt.close(); } catch(SQLException e) {}
 			if(conn!=null) try { conn.close(); } catch(SQLException e) {}
