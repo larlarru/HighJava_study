@@ -125,8 +125,8 @@ public class JdbcBoardDaoImpl implements IJdbcBoardDao{
 			
 			conn = DBUtil3.getConnection();
 			
-			String sql = "SELECT BOARD_NO, board_title, "
-					+ "board_writer to_char(board_date, 'YYYY-MM-DD') "
+			String sql = "SELECT board_no, board_title, "
+					+ "board_writer, to_char(board_date, 'YYYY-MM-DD') "
 					+ "board_date, board_cnt, board_content FROM JDBC_BOARD "
 					+ "ORDER BY board_no desc";
 			stmt = conn.createStatement();

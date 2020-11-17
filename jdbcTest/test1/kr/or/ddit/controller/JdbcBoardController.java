@@ -30,6 +30,7 @@ public class JdbcBoardController {
 			
 			switch(choice) {
 				case 1:		// 새글 작성
+					insertBoard();
 					break;
 				case 2:		// 게시글 보기
 					break;
@@ -78,13 +79,13 @@ public class JdbcBoardController {
 		
 		System.out.println("\t새글작성하기");
 		System.out.println("-------------------------------------------------------------");
-		System.out.println(" - 제 목 : ");
+		System.out.print(" - 제 목 : ");
 		String title = scan.nextLine();
 		
-		System.out.println(" - 작성자");
+		System.out.print(" - 작성자 : ");
 		String writer = scan.nextLine();
 		
-		System.out.println(" - 내 용 : ");
+		System.out.print(" - 내 용 : ");
 		String content = scan.nextLine();
 		
 		// 입력 받은 데이터를 VO객체에 담는다.
