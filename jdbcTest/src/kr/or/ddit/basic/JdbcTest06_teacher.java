@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 import kr.or.ddit.util.DBUtil;
 import kr.or.ddit.util.DBUtil2;
+import kr.or.ddit.util.DBUtil3;
 
 /*
 	회원을 관리하는 프로그램 작성하기
@@ -283,7 +284,8 @@ public class JdbcTest06_teacher {
 		
 		try {
 //			conn = DBUtil.getConnection();
-			conn = DBUtil2.getConnection();
+			//conn = DBUtil2.getConnection();
+			conn = DBUtil3.getConnection();
 			
 			String sql = "select * from mymember";
 			
