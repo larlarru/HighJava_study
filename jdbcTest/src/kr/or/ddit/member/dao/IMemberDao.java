@@ -58,9 +58,9 @@ public interface IMemberDao {
 	
 	/**
 	 * Map의 정보를 이용하여 회원 정보를 중 원하는 컬럼을 수정하는 메서드
-	 * Map의 key값 : 회원ID(memId), 변경할 컬럼명(field), 변경할데이터
-	 * @param paramMap
-	 * @return
+	 * Map의 key값 : 회원ID(memId), 변경할 컬럼명(field), 변경할데이터(data)
+	 * @param paramMap 회원ID, 변경할컬럼, 변경할데이터가 저장된 Map객체
+	 * @return 수정성공 : 1, 실패 : 0
 	 */
 	public int updateMeber2(Map<String, String> paramMap);
 	

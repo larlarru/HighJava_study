@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import kr.or.ddit.member.vo.MemberVO;
 import kr.or.ddit.util.DBUtil3;
@@ -279,6 +280,38 @@ public class MemberDaoImpl implements IMemberDao{
 			if(pstmt!=null) try { pstmt.close(); }catch(SQLException e) {}
 			if(conn!=null) try { conn.close(); }catch(SQLException e) {}
 		}
+		return cnt;
+	}
+
+	@Override
+	public int updateMeber2(Map<String, String> paramMap) {
+		// key값 ==> 회원ID(memId), 변경할 컬럼명(field), 변경할데이터(data)
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int cnt = 0;
+		
+		try {
+
+			conn = DBUtil3.getConnection();
+			
+			String sql= "UPDATE MYMEMBER SET "  
+					+ paramMap.get("field")
+					+ " = ? WHERE mem_id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, paramMap.get("data"));
+			pstmt.setString(2, paramMap.get("memId"));
+			
+			cnt = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			cnt = 0;
+			e.printStackTrace();
+		} finally {
+			if(pstmt!=null) try { pstmt.close(); }catch(SQLException e) {}
+			if(conn!=null) try { conn.close(); }catch(SQLException e) {}
+		}
+		
 		return cnt;
 	}
 

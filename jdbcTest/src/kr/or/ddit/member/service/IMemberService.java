@@ -1,6 +1,7 @@
 package kr.or.ddit.member.service;
 
 import java.util.List;
+import java.util.Map;
 
 import kr.or.ddit.member.vo.MemberVO;
 
@@ -55,4 +56,6 @@ public interface IMemberService {
 	public int updateMemName(String memId, String memName);
 	public int updateMemTel(String memId, String memTel);
 	public int updateMemAddr(String memId, String memAddr);
+	
+	public int updateMeber2(Map<String, String> paramMap);
 }

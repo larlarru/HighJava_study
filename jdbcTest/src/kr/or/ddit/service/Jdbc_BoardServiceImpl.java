@@ -4,7 +4,7 @@ import java.util.List;
 
 import kr.or.ddit.dao.Jdbc_BoardDao;
 import kr.or.ddit.dao.Jdbc_BoardDaoImpl;
-import kr.or.ddit.vo.Jdbc_BoardVO;
+import kr.or.ddit.vo.JdbcBoardVO;
 
 public class Jdbc_BoardServiceImpl implements Jdbc_BoardService{
 	
@@ -22,7 +22,7 @@ public class Jdbc_BoardServiceImpl implements Jdbc_BoardService{
 	}
 	
 	@Override
-	public int insertJdbc_Board(Jdbc_BoardVO jdbc_BoardVo) {
+	public int insertJdbc_Board(JdbcBoardVO jdbc_BoardVo) {
 		return dao.insertJdbc_Board(jdbc_BoardVo);
 	}
 
@@ -32,17 +32,17 @@ public class Jdbc_BoardServiceImpl implements Jdbc_BoardService{
 	}
 
 	@Override
-	public int updateJdbc_Board(int board_no, Jdbc_BoardVO jdbc_BoardVo) {
+	public int updateJdbc_Board(int board_no, JdbcBoardVO jdbc_BoardVo) {
 		return dao.updateJdbc_Board(board_no, jdbc_BoardVo);
 	}
 
 	@Override
-	public List<Jdbc_BoardVO> getAllJdbc_BoardList() {
+	public List<JdbcBoardVO> getAllJdbc_BoardList() {
 		return dao.getAllJdbc_BoardList();
 	}
 
 	@Override
-	public List<Jdbc_BoardVO> getJdbc_BoardList(String board_title) {
+	public List<JdbcBoardVO> getJdbc_BoardList(String board_title) {
 		return dao.getJdbc_BoardList(board_title);
 	}
 
@@ -52,7 +52,7 @@ public class Jdbc_BoardServiceImpl implements Jdbc_BoardService{
 	}
 
 	@Override
-	public Jdbc_BoardVO getJdbc_BoardShowOne(int board_no) {
+	public JdbcBoardVO getJdbc_BoardShowOne(int board_no) {
 		return dao.getJdbc_BoardShowOne(board_no);
 	}
 

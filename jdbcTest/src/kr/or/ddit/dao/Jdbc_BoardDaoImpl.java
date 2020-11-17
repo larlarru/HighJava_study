@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.or.ddit.util.DBUtil3;
-import kr.or.ddit.vo.Jdbc_BoardVO;
+import kr.or.ddit.vo.JdbcBoardVO;
 
 public class Jdbc_BoardDaoImpl implements Jdbc_BoardDao{
 	
@@ -24,7 +24,7 @@ public class Jdbc_BoardDaoImpl implements Jdbc_BoardDao{
 	}
 
 	@Override
-	public int insertJdbc_Board(Jdbc_BoardVO jdbc_BoardVo) {
+	public int insertJdbc_Board(JdbcBoardVO jdbc_BoardVo) {
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -111,7 +111,7 @@ public class Jdbc_BoardDaoImpl implements Jdbc_BoardDao{
 	}
 
 	@Override
-	public int updateJdbc_Board(int board_no, Jdbc_BoardVO jdbc_BoardVo) {
+	public int updateJdbc_Board(int board_no, JdbcBoardVO jdbc_BoardVo) {
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -153,14 +153,14 @@ public class Jdbc_BoardDaoImpl implements Jdbc_BoardDao{
 	}
 
 	@Override
-	public List<Jdbc_BoardVO> getAllJdbc_BoardList() {
+	public List<JdbcBoardVO> getAllJdbc_BoardList() {
 		
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
 		int cnt = 0;
 		
-		List<Jdbc_BoardVO> jdbc_BoardList = null;
+		List<JdbcBoardVO> jdbc_BoardList = null;
 		
 		try {
 
@@ -178,7 +178,7 @@ public class Jdbc_BoardDaoImpl implements Jdbc_BoardDao{
 			jdbc_BoardList = new ArrayList<>();
 			
 			while (rs.next()) {
-				Jdbc_BoardVO jdbc_BoardVo = new Jdbc_BoardVO();
+				JdbcBoardVO jdbc_BoardVo = new JdbcBoardVO();
 				
 				jdbc_BoardVo.setBoard_no(rs.getInt("BOARD_NO"));
 				jdbc_BoardVo.setBoard_title(rs.getString("BOARD_TITLE"));
@@ -200,14 +200,14 @@ public class Jdbc_BoardDaoImpl implements Jdbc_BoardDao{
 	}
 
 	@Override
-	public List<Jdbc_BoardVO> getJdbc_BoardList(String board_title) {
+	public List<JdbcBoardVO> getJdbc_BoardList(String board_title) {
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int cnt = 0;
 		
-		List<Jdbc_BoardVO> jdbc_BoardList = null;
+		List<JdbcBoardVO> jdbc_BoardList = null;
 		
 		try {
 
@@ -230,7 +230,7 @@ public class Jdbc_BoardDaoImpl implements Jdbc_BoardDao{
 			System.out.println();
 			
 			while (rs.next()) {
-				Jdbc_BoardVO jdbc_BoardVo = new Jdbc_BoardVO();
+				JdbcBoardVO jdbc_BoardVo = new JdbcBoardVO();
 				jdbc_BoardVo.setBoard_no(rs.getInt("BOARD_NO"));
 				jdbc_BoardVo.setBoard_title(rs.getString("BOARD_TITLE"));
 				jdbc_BoardVo.setBoard_writer(rs.getString("BOARD_WRITER"));
@@ -289,14 +289,14 @@ public class Jdbc_BoardDaoImpl implements Jdbc_BoardDao{
 	}
 
 	@Override
-	public Jdbc_BoardVO getJdbc_BoardShowOne(int board_no) {
+	public JdbcBoardVO getJdbc_BoardShowOne(int board_no) {
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int cnt = 0;
 		int boardNumber = board_no;
-		Jdbc_BoardVO jdbc_BoardVo = null;
+		JdbcBoardVO jdbc_BoardVo = null;
 		
 		try {
 			conn = DBUtil3.getConnection();
@@ -320,7 +320,7 @@ public class Jdbc_BoardDaoImpl implements Jdbc_BoardDao{
 			cnt = pstmt.executeUpdate();
 			rs = pstmt.executeQuery();
 			
-			jdbc_BoardVo = new Jdbc_BoardVO();
+			jdbc_BoardVo = new JdbcBoardVO();
 			
 			if(rs.next()) {
 				jdbc_BoardVo.setBoard_no(rs.getInt("BOARD_NO"));

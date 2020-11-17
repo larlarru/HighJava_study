@@ -7,7 +7,7 @@ import java.util.Scanner;
 import kr.or.ddit.service.Jdbc_BoardService;
 import kr.or.ddit.service.Jdbc_BoardServiceImpl;
 import kr.or.ddit.util.DBUtil3;
-import kr.or.ddit.vo.Jdbc_BoardVO;
+import kr.or.ddit.vo.JdbcBoardVO;
 
 public class Jdbc_BoardController {
 
@@ -70,7 +70,7 @@ public class Jdbc_BoardController {
 
 		
 		
-		Jdbc_BoardVO jdbc_BoardVo = new Jdbc_BoardVO();
+		JdbcBoardVO jdbc_BoardVo = new JdbcBoardVO();
 		
 		jdbc_BoardVo.setBoard_title(boardTitle);
 		jdbc_BoardVo.setBoard_writer(boardWriter);
@@ -93,7 +93,7 @@ public class Jdbc_BoardController {
 		System.out.print("검색할 제목 입력 >>");
 		String searchName = scan.nextLine();
 		
-		List<Jdbc_BoardVO> jdbc_BoardList = service.getJdbc_BoardList(searchName);
+		List<JdbcBoardVO> jdbc_BoardList = service.getJdbc_BoardList(searchName);
 		
 		if (jdbc_BoardList != null) {
 
@@ -101,7 +101,7 @@ public class Jdbc_BoardController {
 			System.out.println("NO\t제 목\t\t작성자\t조회수");
 			System.out.println("----------------------------------------");
 			
-			for(Jdbc_BoardVO jdbc_Board : jdbc_BoardList) {
+			for(JdbcBoardVO jdbc_Board : jdbc_BoardList) {
 
 				System.out.print(jdbc_Board.getBoard_no() + "\t");
 				System.out.print(jdbc_Board.getBoard_title() + "\t");
@@ -157,7 +157,7 @@ public class Jdbc_BoardController {
 			start();
 		}
 		
-		Jdbc_BoardVO jdbc_BoardVo = service.getJdbc_BoardShowOne(boardNumber);
+		JdbcBoardVO jdbc_BoardVo = service.getJdbc_BoardShowOne(boardNumber);
 
 		if (jdbc_BoardVo != null) {
 			System.out.println("============================");
@@ -210,7 +210,7 @@ public class Jdbc_BoardController {
 		System.out.print("수정할 내용 입력>>");
 		String boardContent = scan.nextLine();
 		
-		Jdbc_BoardVO jdbc_BoardVo = new Jdbc_BoardVO();
+		JdbcBoardVO jdbc_BoardVo = new JdbcBoardVO();
 		
 		jdbc_BoardVo.setBoard_title(boardTitle);
 		jdbc_BoardVo.setBoard_content(boardContent);
@@ -233,12 +233,12 @@ public class Jdbc_BoardController {
 	// 전체 검색
 	public void selectAllBoard() {
 		
-		List<Jdbc_BoardVO> jdbc_BoardList = service.getAllJdbc_BoardList();
+		List<JdbcBoardVO> jdbc_BoardList = service.getAllJdbc_BoardList();
 		
 		System.out.println("-------------------------------------------------------------");
 		System.out.println("No	        제 목            작성자 	조회수");
 		System.out.println("-------------------------------------------------------------");
-		for(Jdbc_BoardVO jdbc_BoardVo : jdbc_BoardList) {
+		for(JdbcBoardVO jdbc_BoardVo : jdbc_BoardList) {
 			System.out.print(jdbc_BoardVo.getBoard_no() + "\t");
 			System.out.print(jdbc_BoardVo.getBoard_title() + "\t");
 			System.out.print(jdbc_BoardVo.getBoard_writer() + "\t");

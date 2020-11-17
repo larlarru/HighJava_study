@@ -1,6 +1,6 @@
 package kr.or.ddit.vo;
 
-public class Jdbc_BoardVO {
+public class JdbcBoardVO {
 	
 	private int board_no;
 	private String board_title;

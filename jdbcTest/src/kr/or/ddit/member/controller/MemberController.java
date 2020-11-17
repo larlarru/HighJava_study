@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 import kr.or.ddit.member.service.IMemberService;
@@ -77,15 +79,72 @@ public class MemberController {
 	
 	private void updateMember2() {
 		
+		System.out.println();
+		System.out.println("수정할 회원 정보를 입력하세요.");
+		System.out.print("회원ID>>");
+		String memId = scan.next();
+		
+		int count = service.getMemberCount(memId);
+		
+		if(count==0) {	// 회원이 없을때
+			System.out.println(memId + "는(은) 없는 회원ID입니다.");
+			System.out.println("수정 작업 실패");
+			return;
+		}
+		
+		System.out.println();
+		System.out.println("수정할 항목을 선택하세요.");
+		
 		System.out.println("----------------");
-		System.out.println("1. 회원이름 수정");
-		System.out.println("2. 회원전화번호 수정");
-		System.out.println("3. 회원주소 수정");
-		System.out.println("4. 취소");
+		System.out.print("\t" + "1. 회원이름 수정" + "\t");
+		System.out.print("2. 회원전화번호 수정" + "\t");
+		System.out.print("3. 회원주소 수정" + "\t");
+		System.out.print("4. 취소");
 		System.out.println("----------------");
 		System.out.print("번호입력>>");
-		int input = scan.nextInt();
+		int num = scan.nextInt();
 		
+		String updateField = null;	// 선택한 컬럼명이 저장될 변수
+		String updateStr = null;	// 선택한 컬럼의 제목이 저장될 변수
+		
+		switch (num) {
+			case 1: 
+				updateField = "mem_name";
+				updateStr = "회원이름";
+				break;
+			case 2: 
+				updateField = "mem_tel";
+				updateStr = "회원전화번호";
+				break;
+			case 3: 
+				updateField = "mem_addr";
+				updateStr = "회원주소";
+				break;
+			default :
+				return;
+		}
+		
+		// 수정할 데이터 입력 받기
+		System.out.println();
+		scan.nextLine();	// 입력 버퍼 비우기
+		System.out.print("새로운 " + updateStr + " >> ");
+		String updateData = scan.nextLine();
+		
+		// 수정할 정보를 Map에 추가한다.
+		Map<String, String> paramMap = new HashMap<>();
+		paramMap.put("memId", memId);
+		paramMap.put("field", updateField);
+		paramMap.put("data", updateData);
+		
+		int cnt = service.updateMeber2(paramMap);
+		
+		if (cnt > 0) {
+			System.out.println("수정 작업 성공~~~");
+		} else {
+			System.out.println("수정 작업 실패!!!");
+		}
+		
+		/*
 		switch (input) {
 			case 1:
 				updateMemName();
@@ -98,7 +157,7 @@ public class MemberController {
 				break;
 			case 4:
 				return;
-		}
+		}*/
 
 	}
 	
