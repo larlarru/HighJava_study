@@ -56,4 +56,19 @@ public class MemberServiceImpl implements IMemberService {
 		return dao.getMemberCount(memId);
 	}
 
+	@Override
+	public int updateMemName(String memId, String memName) {
+		return dao.updateMemName(memId, memName);
+	}
+
+	@Override
+	public int updateMemTel(String memId, String memTel) {
+		return dao.updateMemTel(memId, memTel);
+	}
+
+	@Override
+	public int updateMemAddr(String memId, String memAddr) {
+		return dao.updateMemAddr(memId, memAddr);
+	}
+
 }

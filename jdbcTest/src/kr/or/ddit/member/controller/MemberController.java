@@ -19,7 +19,7 @@ public class MemberController {
 	//private Scanner scan = new Scanner(System.in);
 	public Scanner scan = new Scanner(System.in);
 	private IMemberService service; // Service객체가 저장될 변수 선언
-
+	
 	// 생성자
 	public MemberController() {
 		//service = new MemberServiceImpl();
@@ -46,6 +46,9 @@ public class MemberController {
 			case 4:
 				displayMember(); // 전체 출력
 				break;
+			case 5:
+				updateMember2(); // 전체 출력
+				break;
 			case 0:
 				System.out.println();
 				System.out.println("프로그램을 종료합니다.");
@@ -64,11 +67,101 @@ public class MemberController {
 		System.out.println(" 2. 자료 삭제");
 		System.out.println(" 3. 자료 수정");
 		System.out.println(" 4. 전체 자료 출력");
+		System.out.println(" 5. 자료 수정2");
 		System.out.println(" 0. 작업 끝.");
 		System.out.println("----------------");
 		System.out.print(" 작업 선택 >> ");
 
 		return scan.nextInt();
+	}
+	
+	private void updateMember2() {
+		
+		System.out.println("----------------");
+		System.out.println("1. 회원이름 수정");
+		System.out.println("2. 회원전화번호 수정");
+		System.out.println("3. 회원주소 수정");
+		System.out.println("4. 취소");
+		System.out.println("----------------");
+		System.out.print("번호입력>>");
+		int input = scan.nextInt();
+		
+		switch (input) {
+			case 1:
+				updateMemName();
+				break;
+			case 2:
+				updateMemTel();
+				break;
+			case 3:
+				updateMemAddr();
+				break;
+			case 4:
+				return;
+		}
+
+	}
+	
+	
+	private void updateMemAddr() {
+		scan.nextLine();
+		
+		displayMember();
+		
+		System.out.print("수정할 회원 Id 선택>>");
+		String choiceMemId = scan.nextLine();
+		
+		System.out.print("수정할 회원 주소 입력>>");
+		String addr = scan.nextLine();
+		
+		int cnt = service.updateMemAddr(choiceMemId, addr);
+		
+		if (cnt > 0) {
+			System.out.println("회원주소 수정 작업 성공~~~");
+		} else {
+			System.out.println("수정 작업 실패!!!");
+		}
+	}
+
+	private void updateMemTel() {
+		scan.nextLine();
+		
+		displayMember();
+		
+		System.out.print("수정할 회원 Id 선택>>");
+		String choiceMemId = scan.nextLine();
+		
+		System.out.print("수정할 회원 전화번호 입력>>");
+		String tel = scan.nextLine();
+		
+		int cnt = service.updateMemTel(choiceMemId, tel);
+		
+		if (cnt > 0) {
+			System.out.println("회원전화번호 수정 작업 성공~~~");
+		} else {
+			System.out.println("수정 작업 실패!!!");
+		}
+	}
+
+	private void updateMemName() {
+		scan.nextLine();
+		
+		displayMember();
+		
+		System.out.print("수정할 회원 Id 선택>>");
+		String choiceMemId = scan.nextLine();
+		
+		System.out.print("수정할 회원 이름 입력>>");
+		String name = scan.nextLine();
+		
+		int cnt = service.updateMemName(choiceMemId, name);
+		
+		if (cnt > 0) {
+			System.out.println("회원이름 수정 작업 성공~~~");
+		} else {
+			System.out.println("수정 작업 실패!!!");
+		}
+		
 	}
 
 	// 회원 정보를 수정하는 메서드

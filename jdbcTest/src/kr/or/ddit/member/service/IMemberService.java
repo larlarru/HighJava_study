@@ -51,4 +51,8 @@ public interface IMemberService {
 	 * @return 검색된 회원 ID 개수
 	 */
 	public int getMemberCount(String memId);
+	
+	public int updateMemName(String memId, String memName);
+	public int updateMemTel(String memId, String memTel);
+	public int updateMemAddr(String memId, String memAddr);
 }

@@ -198,4 +198,88 @@ public class MemberDaoImpl implements IMemberDao{
 		return count;
 	}
 
+	@Override
+	public int updateMemName(String memId, String memName) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int cnt = 0;
+		
+		try {
+			
+			conn = DBUtil3.getConnection();
+			
+			String sql ="UPDATE MYMEMBER SET mem_name = ? "
+					+ "WHERE mem_id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memName);
+			pstmt.setString(2, memId);
+			
+			cnt = pstmt.executeUpdate();
+		
+		} catch (SQLException e) {
+			cnt = 0;
+			e.printStackTrace();
+		} finally {
+			if(pstmt!=null) try { pstmt.close(); }catch(SQLException e) {}
+			if(conn!=null) try { conn.close(); }catch(SQLException e) {}
+		}
+		return cnt;
+	}
+
+	@Override
+	public int updateMemTel(String memId, String memTel) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int cnt = 0;
+		
+		try {
+			
+			conn = DBUtil3.getConnection();
+			
+			String sql ="UPDATE MYMEMBER SET mem_tel = ? "
+					+ "WHERE mem_id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memTel);
+			pstmt.setString(2, memId);
+			
+			cnt = pstmt.executeUpdate();
+		
+		} catch (SQLException e) {
+			cnt = 0;
+			e.printStackTrace();
+		} finally {
+			if(pstmt!=null) try { pstmt.close(); }catch(SQLException e) {}
+			if(conn!=null) try { conn.close(); }catch(SQLException e) {}
+		}
+		return cnt;
+	}
+
+	@Override
+	public int updateMemAddr(String memId, String memAddr) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int cnt = 0;
+		
+		try {
+			
+			conn = DBUtil3.getConnection();
+			
+			String sql ="UPDATE MYMEMBER SET mem_addr = ? "
+					+ "WHERE mem_id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memAddr);
+			pstmt.setString(2, memId);
+			
+			cnt = pstmt.executeUpdate();
+		
+		} catch (SQLException e) {
+			cnt = 0;
+			e.printStackTrace();
+		} finally {
+			if(pstmt!=null) try { pstmt.close(); }catch(SQLException e) {}
+			if(conn!=null) try { conn.close(); }catch(SQLException e) {}
+		}
+		return cnt;
+	}
+
 }
