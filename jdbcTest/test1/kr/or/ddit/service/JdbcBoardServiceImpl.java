@@ -42,6 +42,10 @@ public class JdbcBoardServiceImpl implements IJdbcBoardService{
 
 	@Override
 	public JdbcBoardVO getBoard(int boardNo) {
+		int cnt = setCountIncrement(boardNo);	// 조회수 증가
+		if(cnt==0) {	// 조회수 증가가 실패했을 때
+			return null;
+		}
 		return dao.getBoard(boardNo);
 	}
 
