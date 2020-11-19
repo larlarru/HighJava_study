@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	이 xml문서는 ibatis에서 실행할 SQL문을 작성하는 문서입니다.
+ -->
+ <!DOCTYPE sqlMap
+ 	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+ 	"http://ibatis.apache.org/dtd/dtd-map-2.dtd">
+ 
+ <sqlMap namespace="jdbcboard">	
+ 	
+ 	<insert id="insertBoard" parameterClass="JdbcBoardVO">
+ 		INSERT INTO JDBC_BOARD(BOARD_NO, BOARD_TITLE, 
+ 								BOARD_WRITER, BOARD_DATE,
+								BOARD_CNT, BOARD_CONTENT)
+					VALUES( board_seq.nextval, #BOARD_TITLE#, 
+							#BOARD_WRITER#, sysdate, 0, #BOARD_CONTENT# )
+ 	</insert>
+ 	
+ 	<delete id="deleteBoard" parameterClass="int">
+ 		DELETE FROM JDBC_BOARD WHERE board_no = #board_no#
+ 	</delete>
+ 	
+ 	<update id="updateBoard" parameterClass="boardVo">
+ 		UPDATE JDBC_BOARD SET board_title = #board_title#,
+ 								board_date = sysdate,
+ 								board_content = #board_content#
+ 						WHERE board_no = #board_no#
+ 	</update>
+ 	
+ 	<select id="selectAllBoard" resultClass="boardVo">
+ 		SELECT * FROM JDBC_BOARD ORDER BY board_no DESC
+ 	</select>
+ 	
+ 	<select id="getBoard" parameterClass="int" resultClass="boardVo">
+ 	
+ 		SELECT board_no, board_title, board_writer,
+ 				to_char(board_date, 'YYYY-MM-DD') board_date,
+ 				board_cnt, board_content
+ 				FROM JDBC_BOARD
+ 				WHERE board_no = #board_no# 
+ 	</select>
+ 	
+ 	<select id="getSearchBoardList" parameterClass="string" resultClass="boardVo">
+ 	
+ 		SELECT board_no, board_title, board_writer,
+ 				to_char(board_date, 'YYYY-MM-DD') board_date,
+ 				board_cnt, board_content
+ 				FROM JDBC_BOARD
+ 				WHERE board_title like %#board_title#%
+ 				ORDER BY board_no DESC
+ 	</select>
+ 	
+ 	<update id="setCountIncrement" parameterClass="int">
+ 		UPDATE JDBC_BOARD SET board_cnt = #board_cnt + 1#,
+ 						WHERE board_no = #board_no#
+ 	</update>
+ 	
+ 	
+ </sqlMap>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

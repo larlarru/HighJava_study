@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.nio.charset.Charset;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;
 
 import com.ibatis.common.resources.Resources;
@@ -100,7 +101,7 @@ public class LprodibatisTest {
 			}
 			System.out.println("---------------------------------------------");
 			*/
-			
+			/*
 			// 2-3. delete 연습
 			System.out.println("delete 작업 시작.");
 			System.out.print("삭제할 Lprod_gu 입력 : ");
@@ -117,7 +118,46 @@ public class LprodibatisTest {
 				System.out.println("delete 작업 실패.");
 			}
 			System.out.println("---------------------------------------------");
+			*/
 			
+			// 2-4. select 연습
+			
+			// 1) 응답 결과가 여러개의 레코드인 경우
+			//		==> 응답 결과가 여러개일 경우에는 queryForList() 메서드를 사용하는데
+			//			이 메서드는 여러개의 레코드 각각을 VO객체에 담은 후 이 VO객체를 List에
+			//			추가하는 작업을 자동으로 수행한다.
+			// 형식) sqlMapClient객체변수.queryForList("namespace값.id속성값", 파라미터클래스)
+			//		==> SQL문에 전달할 데이터가 없으면 '파라미터클래스'값을 생략할 수 있다.
+			/*
+			System.out.println("1) select 연습(결과가 여러개일 경우...)");
+			List<LprodVO> lprodList = smc.queryForList("lprod.getAllLprod");
+			
+			System.out.println("---------------------------------------------");
+			for(LprodVO lpVo : lprodList) {
+				System.out.println("ID : " + lpVo.getLprod_id());
+				System.out.println("GU : " + lpVo.getLprod_gu());
+				System.out.println("NM : " + lpVo.getLprod_nm());
+				System.out.println("---------------------------------------------");
+			}
+			System.out.println("출력 끝......");
+			*/
+			// 2) 응답 결과가 1개일 경우
+			//		==> 응답 결과가 1개일 경우에는 queryForObject()메서드를 사용한다.
+			//		형식) sqlMapClient객체변수.queryForObject("namespace값.id속성값", 파라미터클래스)
+			
+			System.out.println("2) select 연습시작(결과가 1개일 경우)...");
+			System.out.print("검색할 lprod_gu 입력  : ");
+			String lprodGu = scan.next();
+			
+			LprodVO lprodVo = (LprodVO)smc.queryForObject("lprod.getLprod", lprodGu);
+			
+			if(lprodVo==null) {	// 검색할 결과가 하나도 없으면 null을 반환한다.
+				System.out.println("검색한 데이터가 하나도 없습니다.");				
+			} else {
+				System.out.println("ID : " + lprodVo.getLprod_id());
+				System.out.println("GU : " + lprodVo.getLprod_gu());
+				System.out.println("NM : " + lprodVo.getLprod_nm());
+			}
 			
 		} catch (IOException e) {
 			e.printStackTrace();
