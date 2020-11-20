@@ -24,8 +24,6 @@
 	 <typeAlias alias="lprodVo" type="kr.or.ddit.basic.LprodVO"/>
 	 <typeAlias alias="memVo" type="kr.or.ddit.member.vo.MemberVO"/>
 	 <typeAlias alias="boardVo" type="kr.or.ddit.board.vo.JdbcBoardVO"/>
-	 <typeAlias alias="roomVo" type="kr.or.ddit.room.vo.HotelRoomVO"/>
-	 
 	 
 	 <!-- DB와 연결을 처리하는 부분 -->
 	 <transactionManager type="JDBC">
@@ -46,7 +44,6 @@
 	 <sqlMap resource="kr/or/ddit/basic/lprodTest.xml"/>
 	 <sqlMap resource="kr/or/ddit/member/ibatis/mymember.xml"/>
 	 <sqlMap resource="kr/or/ddit/board/ibatis/jdbcboard.xml"/>
-	 <sqlMap resource="kr/or/ddit/room/ibatis/hotelroom.xml"/>
 		
 </sqlMapConfig>
 

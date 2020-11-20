@@ -55,7 +55,7 @@ public class JdbcBoardController {
 		System.out.println("----------------------------------");
 		System.out.print("- 검색할 제목 입력 : ");
 		String title = scan.nextLine();
-		
+				
 		return title;
 	}
 	
