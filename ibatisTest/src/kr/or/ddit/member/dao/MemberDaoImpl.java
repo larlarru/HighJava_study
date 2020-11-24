@@ -17,6 +17,7 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
 import kr.or.ddit.member.vo.MemberVO;
+import kr.or.ddit.util.AES256Util;
 import kr.or.ddit.util.BuildSqlMapClient;
 
 public class MemberDaoImpl implements IMemberDao{
@@ -26,6 +27,7 @@ public class MemberDaoImpl implements IMemberDao{
 	
 	// 1번
 	private static MemberDaoImpl dao;
+	
 	
 	// 2번
 	// DAO의 생성자에서 iBatis환경 설정과 sqlMapClient객체를 생성한다.
